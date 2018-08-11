@@ -91,8 +91,13 @@ public enum ImageFetcherError: Error {
 }
 
 public struct ImageFetcherImageSizeMetrics:Codable, Equatable, Hashable {
-    let targetSize:CGSize
-    let sourceSize:CGSize
+    public let targetSize:CGSize
+    public let sourceSize:CGSize
+    
+    public init(targetSize:CGSize, sourceSize:CGSize) {
+        self.targetSize = targetSize
+        self.sourceSize = sourceSize
+    }
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine("t\(targetSize)r\(sourceSize)")

@@ -17,7 +17,7 @@ var sinceLastLogging = 0
 
 extension UIImageView {
 
-    var request: ImageFetcherRequest? {
+    public var request: ImageFetcherRequest? {
         get {
             let optionalObject: AnyObject? = objc_getAssociatedObject(self, &requestPropertyAssociationKey) as AnyObject
             if let object: AnyObject = optionalObject {
@@ -55,7 +55,7 @@ extension UIImageView {
         }
     }
 
-    var obsToken: String? {
+    public var obsToken: String? {
         get {
             let optionalObject: AnyObject? = objc_getAssociatedObject(self, &tokenPropertyAssociationKey) as AnyObject
             if let object: AnyObject = optionalObject {
@@ -68,19 +68,19 @@ extension UIImageView {
         }
     }
 
-    @objc func setImageViewWithURL(url:String, guid:String, rawImageSize:CGSize, targetSize:CGSize) {
+    @objc public func setImageViewWithURL(url:String, guid:String, rawImageSize:CGSize, targetSize:CGSize) {
         let size = targetSize.scaledForScreen
         let sizeMetrics = ImageFetcherImageSizeMetrics.init(targetSize: size, sourceSize: rawImageSize)
         let req = ImageFetcherRequest(url: url, identifier: guid, isLowPriority:false, sizeMetrics:sizeMetrics)
         self.request = req
     }
 
-    @objc func setImageViewWithURL(url:String, guid:String) {
+    @objc public func setImageViewWithURL(url:String, guid:String) {
         let req = ImageFetcherRequest(url: url, identifier: guid, isLowPriority:false)
         self.request = req
     }
 
-    @objc func setImageViewWithURL(url:String) {
+    @objc public func setImageViewWithURL(url:String) {
         var size = self.bounds.size
         let scale = UIScreen.main.scale
         size = CGSize(width: size.width * scale, height: size.height * scale)

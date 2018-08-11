@@ -38,7 +38,7 @@ final public class ImageFetcherController {
 
     public static let shared = ImageFetcherController()
 
-    lazy var cachesURL:URL = {
+    lazy public var cachesURL:URL = {
         return self.createCachesURL()
     }()
 
@@ -197,7 +197,7 @@ final public class ImageFetcherController {
         return observationToken
     }
 
-    func fetchImage(imageRequest:ImageFetcherRequest, observationToken:String, completion: @escaping (ImageFetcherResult) -> ()) {
+    public func fetchImage(imageRequest:ImageFetcherRequest, observationToken:String, completion: @escaping (ImageFetcherResult) -> ()) {
 
         imageRequest.performanceMetrics.absoluteStartTime = CFAbsoluteTimeGetCurrent()
         imageRequest.performanceMetrics.memoryCacheLookupStart = CFAbsoluteTimeGetCurrent()
@@ -384,7 +384,7 @@ final public class ImageFetcherController {
         }
     }
     
-    func clearCaches() {
+    public func clearCaches() {
         isolationQueue.sync {
             inMemoryCache.removeAllObjects()
             self.imageLookup.removeAll()

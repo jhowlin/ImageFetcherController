@@ -41,7 +41,7 @@ extension CGSize {
         return ((self.width / self.height) * 100).rounded() / 100
     }
     
-    var scaledForScreen:CGSize {
+    public var scaledForScreen:CGSize {
         return scaled(scaleFactor: UIScreen.main.scale)
     }
 
