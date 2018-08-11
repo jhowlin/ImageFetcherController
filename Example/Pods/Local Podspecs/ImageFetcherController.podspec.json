@@ -1,0 +1,22 @@
+{
+  "name": "ImageFetcherController",
+  "version": "1.0.0",
+  "summary": "A image downloading and caching library.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/jhowlin/ImageFetcherController",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "jhowlin": "jhowlin@me.com"
+  },
+  "source": {
+    "git": "https://github.com/jhowlin/ImageFetcherController.git",
+    "tag": "1.0.0"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source_files": "ImageFetcherController/Classes/**/*"
+}

@@ -1,0 +1,6 @@
+framework module ImageFetcherController {
+  umbrella header "ImageFetcherController-umbrella.h"
+
+  export *
+  module * { export * }
+}

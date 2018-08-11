@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageFetcherController
 
 class ViewController: UIViewController {
 

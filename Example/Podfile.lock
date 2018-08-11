@@ -1,0 +1,16 @@
+PODS:
+  - ImageFetcherController (1.0.0)
+
+DEPENDENCIES:
+  - ImageFetcherController (from `../`)
+
+EXTERNAL SOURCES:
+  ImageFetcherController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ImageFetcherController: ae1f2246a99a3ffe9a35466305cd6c17d98c44e7
+
+PODFILE CHECKSUM: de2d5fa8a7b912404d9d07a751bfa2a8cd8a4faa
+
+COCOAPODS: 1.5.3
