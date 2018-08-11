@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ImageFetcherController_Example' do
+  pod 'ImageFetcherController', :path => '../'
+
+  target 'ImageFetcherController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
