@@ -37,14 +37,14 @@
 /* Begin PBXFileReference section */
 		01FD56C5ED1C25E3EB308E3B1B9B3CAC /* ImageFetcherController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ImageFetcherController-dummy.m"; sourceTree = "<group>"; };
 		0206FF614863D600E8019DC4E989462B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		040D3A267357EF3465E5661A62AAEFC7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		040D3A267357EF3465E5661A62AAEFC7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0C9A409029BB91FA9D03E89FFA85AA88 /* ImageFetcherRenderOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFetcherRenderOperation.swift; path = ImageFetcherController/Classes/ImageFetcherRenderOperation.swift; sourceTree = "<group>"; };
 		19B297610B3F1A87054177197D2F182D /* UIImageView+ImageFetcherController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+ImageFetcherController.swift"; path = "ImageFetcherController/Classes/UIImageView+ImageFetcherController.swift"; sourceTree = "<group>"; };
 		1F69B418F0E6D57C7846439C93F55A2A /* ImageFetcherRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFetcherRequest.swift; path = ImageFetcherController/Classes/ImageFetcherRequest.swift; sourceTree = "<group>"; };
 		202BEDC0366642399C12016ED29907CB /* Pods-ImageFetcherController_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ImageFetcherController_Example-resources.sh"; sourceTree = "<group>"; };
 		2511ACBA807699754CDEA50B0C2778F9 /* ImageFetcherResizing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFetcherResizing.swift; path = ImageFetcherController/Classes/ImageFetcherResizing.swift; sourceTree = "<group>"; };
 		2B600281ED8FC94DA801AD9DA4A12F19 /* Pods-ImageFetcherController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ImageFetcherController_Example-frameworks.sh"; sourceTree = "<group>"; };
-		3B0ABEC1F1EA6D1984E0DBAEE45A8B85 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		3B0ABEC1F1EA6D1984E0DBAEE45A8B85 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4B476F8AF933B7904ACF8D1EB890DABA /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = ImageFetcherController/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		4E6634B80738171E1B1935133C3E51E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -57,16 +57,16 @@
 		86FF7098DE2A21A458D9832AA0C0633C /* Pods-ImageFetcherController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ImageFetcherController_Example-dummy.m"; sourceTree = "<group>"; };
 		8E386F71389730476F84D01E615AC5A1 /* Pods-ImageFetcherController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ImageFetcherController_Example.modulemap"; sourceTree = "<group>"; };
 		919AB9FD0768C61FE0C40002B36FACA6 /* ImageFetcherController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFetcherController.swift; path = ImageFetcherController/Classes/ImageFetcherController.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A48B6B3FAF29EBD48699FC2DD046E874 /* Pods_ImageFetcherController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ImageFetcherController_Example.framework; path = "Pods-ImageFetcherController_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A48B6B3FAF29EBD48699FC2DD046E874 /* Pods_ImageFetcherController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageFetcherController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5440B714E944D1D0693014765972000 /* ImageFetcherController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageFetcherController-prefix.pch"; sourceTree = "<group>"; };
 		AB09A703D551060120276DDDB50B2A32 /* Pods-ImageFetcherController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ImageFetcherController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D2B4011DE569027787143B733F3C9A8A /* Pods-ImageFetcherController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ImageFetcherController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D5DEE770489E2B12B4F13EC2ABDDA320 /* Pods-ImageFetcherController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ImageFetcherController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		E374CD81AE0F9DBE8B28A95F76E6349B /* ImageFetcherController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ImageFetcherController.framework; path = ImageFetcherController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E374CD81AE0F9DBE8B28A95F76E6349B /* ImageFetcherController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageFetcherController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3798F35305530FA8E05E27D4B49B32F /* ImageFetcherController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ImageFetcherController.xcconfig; sourceTree = "<group>"; };
 		F28E2B07E3192B63E049D15867F097D2 /* ImageFetcherDownloadOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFetcherDownloadOperation.swift; path = ImageFetcherController/Classes/ImageFetcherDownloadOperation.swift; sourceTree = "<group>"; };
-		FB45464651D560259E278041F0D8FB77 /* ImageFetcherController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = ImageFetcherController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FB45464651D560259E278041F0D8FB77 /* ImageFetcherController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = ImageFetcherController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -506,6 +506,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
