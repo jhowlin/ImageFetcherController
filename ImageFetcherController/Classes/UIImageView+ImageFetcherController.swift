@@ -12,9 +12,6 @@ import ObjectiveC
 private var requestPropertyAssociationKey: UInt8 = 0
 private var tokenPropertyAssociationKey: UInt8 = 0
 
-var allFetchMeasurements:[CFAbsoluteTime] = []
-var sinceLastLogging = 0
-
 extension UIImageView {
 
     public var request: ImageFetcherRequest? {
@@ -90,10 +87,18 @@ extension UIImageView {
     }
 
     func hashURL(url:String, size:CGSize) -> String {
-        let hash = ("\(size)" + url).hashValue
+        let hash = ("\(size)" + url).djb2hash
         return "\(hash)"
     }
 }
 
+extension String {
+    var djb2hash: Int {
+        let unicodeScalars = self.unicodeScalars.map { $0.value }
+        return unicodeScalars.reduce(5381) {
+            ($0 << 5) &+ $0 &+ Int($1)
+        }
+    }
+}
 
 

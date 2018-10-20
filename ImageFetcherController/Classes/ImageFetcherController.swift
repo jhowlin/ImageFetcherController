@@ -181,10 +181,6 @@ final public class ImageFetcherController {
     func cachedImageFromMemory(request:ImageFetcherRequest) -> UIImage? {
         return inMemoryCache.object(forKey: request.cacheKey as NSString)
     }
-    
-    func canFulfillWithExistingCachedImage(request:ImageFetcherRequest) -> Bool {
-        return false
-    }
 
     @discardableResult public func fetchImage(imageRequest:ImageFetcherRequest, completion:@escaping (ImageFetcherResult) -> ()) -> String {
 
@@ -261,8 +257,8 @@ final public class ImageFetcherController {
             if imageRequest.isLowPriority {
                 operation.queuePriority = .low
             }
-            self.imageFetchQueue.addOperation(operation)
             self.fetchOperations[imageRequest.cacheKey] = operation
+            self.imageFetchQueue.addOperation(operation)
         }
     }
 

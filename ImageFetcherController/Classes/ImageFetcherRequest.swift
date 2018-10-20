@@ -40,10 +40,7 @@ public class ImageFetcherRequest:Codable, Hashable {
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(identifier)
-        if let metrics = sizeMetrics {
-            hasher.combine("t\(metrics.targetSize)r\(metrics.sourceSize)")
-        }
+        hasher.combine(cacheKey)
     }
     
     var cacheKey:String {

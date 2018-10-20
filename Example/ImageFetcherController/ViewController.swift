@@ -35,10 +35,33 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
         let size = CGSize(width: heightWidth, height: heightWidth)
         layout.itemSize = size
         let url = "https://picsum.photos/\(sourceSize.width)/\(sourceSize.height)/?random"
-        for _ in 0..<100 {
+        let numImage = 100
+        for _ in 0..<numImage {
             let info = ImageInfo(url: url, guid: UUID().uuidString)
             imageInfos.append(info)
         }
+        
+        func addRequests(isLowPriority:Bool, start:Int, end:Int) {
+            
+            for i in start..<end {
+                let req = ImageFetcherRequest(url: url, identifier: "\(i)", isLowPriority: isLowPriority, sizeMetrics: nil)
+                ImageFetcherController.shared.fetchImage(imageRequest: req, observationToken: UUID().uuidString) { result in
+                    
+                    switch result {
+                    case let .success(_, req):
+                        let id = req.identifier
+                        print("Success: \(id)")
+                        break
+                    case let .error(error, req):
+                        print("Error: \(error) id: \(req.identifier)")
+                        break
+                    }
+                }
+            }
+        }
+//        
+//        addRequests(isLowPriority: true, start: 0, end: 100)
+//        addRequests(isLowPriority: false, start: 90, end: 100)
     }
     
     func requestForIndex(index:Int, isLowPriority:Bool) -> ImageFetcherRequest {
