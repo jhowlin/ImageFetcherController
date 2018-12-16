@@ -15,7 +15,7 @@ public struct ImageFetcherOptions {
     let numberOfImagesBetweenCacheSaves:Int
     let requestCachePolicy:NSURLRequest.CachePolicy
 
-    public static let defaultOptions = ImageFetcherOptions(imageCacheName: "com.imageFetcher.dict", maxConcurrentFetches: 6, numberOfImagesBetweenCacheSaves: 10, requestCachePolicy: .useProtocolCachePolicy)
+    public static let defaultOptions = ImageFetcherOptions(imageCacheName: "com.imageFetcher.dict", maxConcurrentFetches: 6, numberOfImagesBetweenCacheSaves: 20, requestCachePolicy: .useProtocolCachePolicy)
 }
 
 final public class ImageFetcherController {

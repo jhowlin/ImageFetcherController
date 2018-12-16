@@ -33,14 +33,13 @@ final class ImageFetcherRenderOperation: ImageFetcherBaseOperation {
         self.request.performanceMetrics.bytes = data.count
 
         if let sizes = imageSizes {
-            if let image = scaleAndCropImageData(data: data, targetSize: sizes.targetSize, rawImageSize: sizes.sourceSize) {
+            
+            if let image = decompressAndResize(imageData: data, sourceSize: sizes.sourceSize, targetSize: sizes.targetSize) {
                 self.request.performanceMetrics.renderEndTime = CFAbsoluteTimeGetCurrent()
                 completion(image)
                 self.finish()
             } else {
-                //TODO: Don't crash here
                 fatalError("To do generate uiimage from data")
-                //            onCancel()
             }
         } else {
             var decompressed:UIImage?

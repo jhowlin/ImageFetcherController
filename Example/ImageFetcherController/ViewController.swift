@@ -12,7 +12,7 @@ import ImageFetcherController
 class ViewController: UICollectionViewController, UICollectionViewDataSourcePrefetching {
     
     var imageInfos:[ImageInfo] = []
-    let sourceSize = CGSize(width: 600, height: 600)
+    let sourceSize = CGSize(width: 800, height: 600)
     var prefetchCellTokens = [IndexPath:(String, ImageFetcherRequest)]()
     
     init() {
@@ -29,10 +29,10 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumLineSpacing = 2
-        layout.minimumInteritemSpacing = 2
-        let heightWidth:CGFloat = ((view.bounds.width / 2) - 1).rounded(.down)
-        let size = CGSize(width: heightWidth, height: heightWidth)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+//        let heightWidth:CGFloat = ((view.bounds.width / 2) - 1).rounded(.down)
+        let size = CGSize(width: view.bounds.width, height: 250)
         layout.itemSize = size
         let url = "https://picsum.photos/\(sourceSize.width)/\(sourceSize.height)/?random"
         let numImage = 100
@@ -40,33 +40,12 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
             let info = ImageInfo(url: url, guid: UUID().uuidString)
             imageInfos.append(info)
         }
-        
-        func addRequests(isLowPriority:Bool, start:Int, end:Int) {
-            
-            for i in start..<end {
-                let req = ImageFetcherRequest(url: url, identifier: "\(i)", isLowPriority: isLowPriority, sizeMetrics: nil)
-                ImageFetcherController.shared.fetchImage(imageRequest: req, observationToken: UUID().uuidString) { result in
-                    
-                    switch result {
-                    case let .success(_, req):
-                        let id = req.identifier
-                        print("Success: \(id)")
-                        break
-                    case let .error(error, req):
-                        print("Error: \(error) id: \(req.identifier)")
-                        break
-                    }
-                }
-            }
-        }
-//        
-//        addRequests(isLowPriority: true, start: 0, end: 100)
-//        addRequests(isLowPriority: false, start: 90, end: 100)
     }
     
     func requestForIndex(index:Int, isLowPriority:Bool) -> ImageFetcherRequest {
         let heightWidth:CGFloat = ((view.bounds.width / 2) - 1).rounded(.down)
-        let target = CGSize(width: heightWidth, height: heightWidth)
+//        let target = CGSize(width: heightWidth, height: heightWidth)
+        let target = CGSize(width: view.bounds.width, height: 250)
         let metrics = ImageFetcherImageSizeMetrics(targetSize: target.scaledForScreen, sourceSize: sourceSize)
         let info = imageInfos[index]
         let request = ImageFetcherRequest(url: info.url, identifier: info.guid, isLowPriority: isLowPriority, sizeMetrics: metrics)

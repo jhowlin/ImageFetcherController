@@ -38,6 +38,7 @@ extension UIImageView {
                     if imageRequest.identifier == self?.request?.identifier {
                         self?.obsToken = nil
                         self?.image = image
+                        
                     }
                 case let .error(error, request):
                     if error != .cancelled {
