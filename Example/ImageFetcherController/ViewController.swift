@@ -31,7 +31,6 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-//        let heightWidth:CGFloat = ((view.bounds.width / 2) - 1).rounded(.down)
         let size = CGSize(width: view.bounds.width, height: 250)
         layout.itemSize = size
         let url = "https://picsum.photos/\(sourceSize.width)/\(sourceSize.height)/?random"
@@ -43,8 +42,6 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
     }
     
     func requestForIndex(index:Int, isLowPriority:Bool) -> ImageFetcherRequest {
-        let heightWidth:CGFloat = ((view.bounds.width / 2) - 1).rounded(.down)
-//        let target = CGSize(width: heightWidth, height: heightWidth)
         let target = CGSize(width: view.bounds.width, height: 250)
         let metrics = ImageFetcherImageSizeMetrics(targetSize: target.scaledForScreen, sourceSize: sourceSize)
         let info = imageInfos[index]
@@ -72,19 +69,15 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
-        return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cell = cell as! Cell
         let request = requestForIndex(index: indexPath.item, isLowPriority: false)
         cell.imageView.request = request
         if let (token, req) = prefetchCellTokens[indexPath] {
             ImageFetcherController.shared.removeRequestObserver(request: req, token: token)
             prefetchCellTokens[indexPath] = nil
         }
+        return cell
     }
-    
+
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
