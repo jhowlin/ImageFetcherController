@@ -12,8 +12,10 @@ import ImageFetcherController
 class ViewController: UICollectionViewController, UICollectionViewDataSourcePrefetching {
     
     var imageInfos:[ImageInfo] = []
-    let sourceSize = CGSize(width: 800, height: 600)
+    let sourceSize = CGSize(width: 600, height: 600)
     var prefetchCellTokens = [IndexPath:(String, ImageFetcherRequest)]()
+    var cellSize:CGSize = .zero
+    var cellsPerRow = 4
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -31,18 +33,18 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        let size = CGSize(width: view.bounds.width, height: 250)
-        layout.itemSize = size
+        cellSize = CGSize(width: view.bounds.width / CGFloat(cellsPerRow), height: view.bounds.width / CGFloat(cellsPerRow))
+        layout.itemSize = cellSize
         let url = "https://picsum.photos/\(sourceSize.width)/\(sourceSize.height)/?random"
-        let numImage = 100
-        for _ in 0..<numImage {
-            let info = ImageInfo(url: url, guid: UUID().uuidString)
+        let numImage = 1000
+        for i in 0..<numImage {
+            let info = ImageInfo(url: url, guid: UUID().uuidString) // \(i)")
             imageInfos.append(info)
         }
     }
     
     func requestForIndex(index:Int, isLowPriority:Bool) -> ImageFetcherRequest {
-        let target = CGSize(width: view.bounds.width, height: 250)
+        let target = cellSize
         let metrics = ImageFetcherImageSizeMetrics(targetSize: target.scaledForScreen, sourceSize: sourceSize)
         let info = imageInfos[index]
         let request = ImageFetcherRequest(url: info.url, identifier: info.guid, isLowPriority: isLowPriority, sizeMetrics: metrics)
