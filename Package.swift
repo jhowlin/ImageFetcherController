@@ -1,10 +1,10 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 
 import PackageDescription
 
 let package = Package(
     name: "ImageFetcherController",
-	platforms: [.iOS(.v10)],
+	platforms: [.iOS("13.0")],
     products: [
         .library(
             name: "ImageFetcherController",
