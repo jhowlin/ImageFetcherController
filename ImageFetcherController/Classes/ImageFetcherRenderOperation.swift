@@ -44,7 +44,7 @@ final class ImageFetcherRenderOperation: ImageFetcherBaseOperation {
         } else {
             var decompressed:UIImage?
             if let image = UIImage(data:data) {
-                decompressed = imageFetcherSimpleDecompressor(image)
+                decompressed = rendererDecompressor(image)
             }
             request.performanceMetrics.renderEndTime = CFAbsoluteTimeGetCurrent()
             completion(decompressed)

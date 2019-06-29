@@ -33,14 +33,16 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        cellSize = CGSize(width: view.bounds.width / CGFloat(cellsPerRow), height: view.bounds.width / CGFloat(cellsPerRow))
+        cellSize = CGSize(width: (view.bounds.width / CGFloat(cellsPerRow)) - 2, height: (view.bounds.width / CGFloat(cellsPerRow)) - 2)
+        cellSize = CGRect(origin: .zero, size: cellSize).integral.size
         layout.itemSize = cellSize
-        let url = "https://picsum.photos/\(sourceSize.width)/\(sourceSize.height)/?random"
-        let numImage = 1000
+        let url = "https://picsum.photos/\(Int(sourceSize.width))/\(Int(sourceSize.height))/?random"
+        let numImage = 200
         for i in 0..<numImage {
             let info = ImageInfo(url: url, guid: UUID().uuidString) // \(i)")
             imageInfos.append(info)
         }
+        collectionView.reloadData()
     }
     
     func requestForIndex(index:Int, isLowPriority:Bool) -> ImageFetcherRequest {
@@ -85,7 +87,7 @@ class ViewController: UICollectionViewController, UICollectionViewDataSourcePref
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageInfos.count
+        imageInfos.count
     }
 }
 
@@ -102,7 +104,7 @@ class Cell:UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.frame = contentView.bounds
+        imageView.frame = bounds
         imageView.backgroundColor = .lightGray
     }
 }

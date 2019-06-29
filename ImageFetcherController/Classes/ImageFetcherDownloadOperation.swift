@@ -17,7 +17,7 @@ final class ImageFetcherDownloadOperation:ImageFetcherBaseOperation {
     var completion:((ImageOperationResult) -> ())
     let decompressor:Decompressor
     
-    init(session:URLSession, request:ImageFetcherRequest, decompressor:@escaping Decompressor = imageFetcherSimpleDecompressor, completion:@escaping (ImageOperationResult)->()) {
+    init(session:URLSession, request:ImageFetcherRequest, decompressor:@escaping Decompressor = rendererDecompressor, completion:@escaping (ImageOperationResult)->()) {
         self.session = session
         self.completion = completion
         self.request = request
