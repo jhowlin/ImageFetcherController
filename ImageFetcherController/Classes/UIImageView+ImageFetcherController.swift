@@ -100,6 +100,10 @@ extension String {
             ($0 << 5) &+ $0 &+ Int($1)
         }
     }
+    
+    public var imageFetcherIDHash: String {
+        return "\(djb2hash)"
+    }
 }
 
 

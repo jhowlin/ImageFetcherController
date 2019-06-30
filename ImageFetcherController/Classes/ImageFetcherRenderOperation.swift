@@ -32,7 +32,7 @@ final class ImageFetcherRenderOperation: ImageFetcherBaseOperation {
         self.request.performanceMetrics.renderStartTime = CFAbsoluteTimeGetCurrent()
         self.request.performanceMetrics.bytes = data.count
 
-        if let sizes = imageSizes {
+        if let sizes = imageSizes, sizes.sourceSize.greaterThanZero && sizes.targetSize.greaterThanZero  {
             
             if let image = decompressAndResize(imageData: data, sourceSize: sizes.sourceSize, targetSize: sizes.targetSize) {
                 self.request.performanceMetrics.renderEndTime = CFAbsoluteTimeGetCurrent()

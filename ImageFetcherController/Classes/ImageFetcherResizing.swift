@@ -31,6 +31,10 @@ extension CGSize {
     func scaled(scaleFactor:CGFloat) -> CGSize {
         return CGSize(width: self.width * scaleFactor, height: self.height * scaleFactor)
     }
+    
+    var greaterThanZero:Bool {
+        return width > 0 && height > 0
+    }
 }
 
 typealias Decompressor = (UIImage) -> (UIImage)
