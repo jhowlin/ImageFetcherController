@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "ImageFetcherController",
-	platforms: [.iOS("13.0")],
+	platforms: [.iOS("12.0")],
     products: [
         .library(
             name: "ImageFetcherController",
