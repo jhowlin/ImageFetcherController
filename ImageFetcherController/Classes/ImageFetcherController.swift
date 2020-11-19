@@ -10,12 +10,13 @@ import UIKit
 import ImageIO
 
 public struct ImageFetcherOptions {
-    let imageCacheName:String
-    let maxConcurrentFetches:Int
-    let numberOfImagesBetweenCacheSaves:Int
-    let requestCachePolicy:NSURLRequest.CachePolicy
+    public var imageCacheName:String
+    public var maxConcurrentFetches:Int
+    public var numberOfImagesBetweenCacheSaves:Int
+    public var requestCachePolicy:NSURLRequest.CachePolicy
+    public var logMetrics = false
 
-    public static let defaultOptions = ImageFetcherOptions(imageCacheName: "com.imageFetcher.dict", maxConcurrentFetches: 6, numberOfImagesBetweenCacheSaves: 20, requestCachePolicy: .useProtocolCachePolicy)
+    public static let defaultOptions = ImageFetcherOptions(imageCacheName: "com.imageFetcher.dict", maxConcurrentFetches: 6, numberOfImagesBetweenCacheSaves: 20, requestCachePolicy: .useProtocolCachePolicy, logMetrics: false)
 }
 
 final public class ImageFetcherController {
@@ -33,8 +34,8 @@ final public class ImageFetcherController {
     let numberOfImagesBetweenCacheSaves:Int
     var fetchOperations: [String:Operation] = [:]
     var renderOperations: [String:Operation] = [:]
-    let logMetrics = false
-    let shouldLogStatus = false
+    var logMetrics = false
+    public var shouldLogStatus = false
 
     public static let shared = ImageFetcherController()
 
@@ -52,6 +53,7 @@ final public class ImageFetcherController {
         renderQueue.name = "com.imageFetcher.renderQueue"
         imageCacheName = options.imageCacheName
         numberOfImagesBetweenCacheSaves = options.numberOfImagesBetweenCacheSaves
+        self.logMetrics = options.logMetrics
         loadImageLookup()
     }
 
