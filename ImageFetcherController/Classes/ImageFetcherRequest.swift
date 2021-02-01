@@ -64,7 +64,7 @@ public enum ImageFetcherResult {
     case success(UIImage, ImageFetcherRequest)
     case error(ImageFetcherError, ImageFetcherRequest)
 
-    var image:UIImage? {
+    public var image:UIImage? {
         switch self {
 
         case let .success(img, _):

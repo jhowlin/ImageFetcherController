@@ -15,6 +15,7 @@ public struct ImageFetcherOptions {
     public var numberOfImagesBetweenCacheSaves:Int
     public var requestCachePolicy:NSURLRequest.CachePolicy
     public var logMetrics = false
+    public var cacheURL: URL?
 
     public static let defaultOptions = ImageFetcherOptions(imageCacheName: "com.imageFetcher.dict", maxConcurrentFetches: 6, numberOfImagesBetweenCacheSaves: 20, requestCachePolicy: .useProtocolCachePolicy, logMetrics: false)
 }
@@ -35,6 +36,7 @@ final public class ImageFetcherController {
     var fetchOperations: [String:Operation] = [:]
     var renderOperations: [String:Operation] = [:]
     var logMetrics = false
+    var options: ImageFetcherOptions
     public var shouldLogStatus = false
 
     public static let shared = ImageFetcherController()
@@ -47,6 +49,7 @@ final public class ImageFetcherController {
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = options.requestCachePolicy
         self.session = URLSession(configuration: config)
+        self.options = options
         imageFetchQueue.maxConcurrentOperationCount = options.maxConcurrentFetches
         imageFetchQueue.name = "com.imageFetcher.imageFetchOperationQueue"
         renderQueue.maxConcurrentOperationCount = 6
@@ -59,14 +62,17 @@ final public class ImageFetcherController {
 
     @discardableResult func createCachesURL() -> URL {
         let fileManager = FileManager.default
-        var url = try! fileManager.url(for: .cachesDirectory, in: [.userDomainMask], appropriateFor: nil, create: true)
+        var url = options.cacheURL
+        if url == nil {
+            url = try! fileManager.url(for: .cachesDirectory, in: [.userDomainMask], appropriateFor: nil, create: true)
+        }
         do {
-            url = url.appendingPathComponent("com.imageFetcher.imageFetcher", isDirectory: true)
-            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+            url = url!.appendingPathComponent("com.imageFetcher.imageFetcher", isDirectory: true)
+            try FileManager.default.createDirectory(at: url!, withIntermediateDirectories: true, attributes: nil)
         } catch let error {
             print("Error in \(#function): \(error)")
         }
-        return url
+        return url!
     }
 
     func cacheImageToDisk(_ data:Data, request:ImageFetcherRequest) {
@@ -182,6 +188,25 @@ final public class ImageFetcherController {
 
     func cachedImageFromMemory(request:ImageFetcherRequest) -> UIImage? {
         return inMemoryCache.object(forKey: request.cacheKey as NSString)
+    }
+    
+    public func cachedImage(request:ImageFetcherRequest) -> UIImage? {
+        if let image = cachedImageFromMemory(request: request) {
+            return image
+        } else {
+            if let cachedImage = cachedImageInfoFromLookup(identifier: request.diskCacheKey) {
+                let path = cachedImage.path
+                let url = self.cachesURL.appendingPathComponent(path, isDirectory: false)
+                do {
+                    let data = try Data(contentsOf: url)
+                    let image = decompressAndResize(imageData: data, sourceSize: request.sizeMetrics?.sourceSize ?? .zero, targetSize: request.sizeMetrics?.targetSize ?? .zero)
+                    return image
+                } catch let error  {
+                    print("Error in \(#function): \(error)")
+                }
+            }
+        }
+        return nil
     }
 
     @discardableResult public func fetchImage(imageRequest:ImageFetcherRequest, completion:@escaping (ImageFetcherResult) -> ()) -> String {
