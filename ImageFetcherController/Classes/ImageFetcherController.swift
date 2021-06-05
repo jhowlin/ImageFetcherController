@@ -257,9 +257,11 @@ final public class ImageFetcherController {
 
                 // Check our in memory list of images on disk
                 if let info = cachedImageInfoFromLookup(identifier: imageRequest.diskCacheKey) {
+                    imageRequest.performanceMetrics.fulfillmentType = .diskCache
                     queueImageRenderOperationForRequest(imageRequest: imageRequest, cachedInfo: info, obsToken: observationToken)
                 } else {
                     // Queue up for download
+                    imageRequest.performanceMetrics.fulfillmentType = .downloaded
                     queueImageFetchOperationForRequest(imageRequest: imageRequest)
                 }
             }

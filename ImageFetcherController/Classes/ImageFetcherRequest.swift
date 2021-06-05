@@ -24,7 +24,7 @@ public class ImageFetcherRequest:Codable, Hashable {
     public let url:String
     public let identifier:String
     public let isLowPriority:Bool
-    let performanceMetrics = ImageFetcherMetrics()
+    public var performanceMetrics = ImageFetcherMetrics()
     public var sizeMetrics:ImageFetcherImageSizeMetrics?
 
     public init(url:String, identifier:String, isLowPriority:Bool = false, sizeMetrics:ImageFetcherImageSizeMetrics? = nil) {

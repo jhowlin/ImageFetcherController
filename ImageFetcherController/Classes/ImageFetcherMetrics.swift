@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImageFetcherMetrics:Codable {
+public class ImageFetcherMetrics:Codable {
     var absoluteStartTime:CFAbsoluteTime = 0
     var absoluteEndTime:CFAbsoluteTime = 0
 
@@ -26,7 +26,7 @@ class ImageFetcherMetrics:Codable {
     var diskCacheLookupStart:CFAbsoluteTime = 0
     var diskCacheLookupEnd:CFAbsoluteTime = 0
 
-    var fulfillmentType:ImageFetcherRequestFulfillmentType?
+    public var fulfillmentType:ImageFetcherRequestFulfillmentType = .downloaded
     var workerType:ImageFetcherRequestWorkerType = .worker
     var identifier:String = "No ID"
     var bytes:Int = 0
@@ -57,7 +57,7 @@ class ImageFetcherMetrics:Codable {
         return "\(ms) ms"
     }
 
-    func printMetrics() {
+    public func printMetrics() {
 //        print("IFC: Metrics for \(identifier.prefix(4)):")
 //        print("IFC: " + diskCacheLookupTime)
         print("IFC: " + downloadTime)
@@ -67,13 +67,13 @@ class ImageFetcherMetrics:Codable {
     }
 }
 
-enum ImageFetcherRequestFulfillmentType:String, Codable, Hashable {
+public enum ImageFetcherRequestFulfillmentType:String, Codable, Hashable {
     case downloaded
     case memoryCache
     case diskCache
 }
 
-enum ImageFetcherRequestWorkerType:String, Codable {
+public enum ImageFetcherRequestWorkerType:String, Codable {
     case worker
     case waiter
 }
